@@ -54,6 +54,7 @@ PDF Invoice → extract.py  (Gemini + Structured Outputs)
 - [x] Validation engine (math, VAT, required fields)
 - [x] SQL storage with duplicate detection
 - [x] Live dashboard (Streamlit)
+- [x] Unit tests for validation engine (pytest)
 - [ ] Automated folder watching (drop a PDF → processed automatically)
 - [ ] Docker deployment
 - [ ] Natural-language queries over invoice data (RAG)
