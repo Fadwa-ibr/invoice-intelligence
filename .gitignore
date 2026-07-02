@@ -9,3 +9,4 @@ invoices.db
 
 # Python junk
 __pycache__/
+test_data/
