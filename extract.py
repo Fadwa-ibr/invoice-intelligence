@@ -11,9 +11,8 @@ subtotal, discount, vat_amount, grand_total.
 The invoice may contain Arabic and English - extract English values where available.
 If a field is missing, use null."""
 
-
-def process_invoice(pdf_path):
-    """Full pipeline: extract -> validate -> store. Returns (data, issues, status)."""
+def extract_invoice(pdf_path):
+    """Extraction only - no validation, no saving. Used by the evaluator."""
     client = genai.Client(api_key=open("apikey.txt").read().strip())
     invoice = client.files.upload(file=pdf_path)
     response = client.models.generate_content(
@@ -21,7 +20,12 @@ def process_invoice(pdf_path):
         contents=[invoice, PROMPT],
         config={"response_mime_type": "application/json"},
     )
-    data = json.loads(response.text)
+    return json.loads(response.text)
+
+
+def process_invoice(pdf_path):
+    """Full pipeline: extract -> validate -> store."""
+    data = extract_invoice(pdf_path)
     issues = validate_invoice(data)
     status = save_invoice(data, issues)
     return data, issues, status
