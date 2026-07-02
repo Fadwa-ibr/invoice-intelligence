@@ -40,7 +40,7 @@ PDF Invoice → extract.py  (Gemini + Structured Outputs)
 
 1. Clone the repo and install dependencies:
 
-       pip install google-genai
+       pip install -r requirements.txt
 
 2. Get a free Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey)
 3. Save it in a file named `apikey.txt` (already gitignored)
