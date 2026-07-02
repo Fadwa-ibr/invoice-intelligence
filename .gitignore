@@ -1,0 +1,11 @@
+# Secrets - never upload
+apikey.txt
+
+# Personal data - invoices contain names and phone numbers
+*.pdf
+
+# Local database
+invoices.db
+
+# Python junk
+__pycache__/
