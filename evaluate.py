@@ -12,9 +12,10 @@ def same_text(a, b):
 
 
 def same_num(a, b):
-    return abs((a or 0) - (b or 0)) <= 0.01
-
-
+    try:
+        return abs(float(a) - float(b)) <= 0.01
+    except (TypeError, ValueError):
+        return False
 
 def extract_with_retry(path, attempts=4):
     """Retry on rate limits (429) and busy servers (503) with a cool-down wait."""
