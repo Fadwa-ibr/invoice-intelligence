@@ -28,6 +28,29 @@ PDF Invoice → extract.py  (Gemini + Structured Outputs)
                  ↓
           database.py  (SQLite + duplicate protection)
 ```
+
+## Evaluation
+
+Tested on a synthetic dataset of 10 generated invoices, 4 of which contain
+planted errors (broken line math, missing fields, wrong totals, a duplicate).
+
+| Field | Accuracy |
+|---|---|
+| vendor_name | 100% |
+| invoice_number | 100% |
+| currency | 100% |
+| subtotal | 100% |
+| vat_amount | 100% |
+| grand_total | 100% |
+| line item count | 90% |
+
+**Validator:** caught 4/4 planted errors with 0 false positives.
+
+Reproduce it: `python generate_test_data.py` then `python evaluate.py`
+
+
+
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -55,6 +78,7 @@ PDF Invoice → extract.py  (Gemini + Structured Outputs)
 - [x] SQL storage with duplicate detection
 - [x] Live dashboard (Streamlit)
 - [x] Unit tests for validation engine (pytest)
+- [x] Evaluation harness with synthetic error-injected dataset
 - [ ] Automated folder watching (drop a PDF → processed automatically)
 - [ ] Docker deployment
 - [ ] Natural-language queries over invoice data (RAG)
