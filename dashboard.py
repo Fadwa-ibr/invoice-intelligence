@@ -4,6 +4,9 @@ import sqlite3
 import tempfile
 import os
 from extract import process_invoice
+from database import init_db
+
+init_db()  # make sure the invoices table exists (fresh cloud servers start empty)
 
 st.set_page_config(page_title="Invoice Intelligence", page_icon="🧾", layout="wide")
 
