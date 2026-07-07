@@ -10,3 +10,6 @@ invoices.db
 # Python junk
 __pycache__/
 test_data/
+
+# Personal study notes - not part of the public project
+interview-prep.md
